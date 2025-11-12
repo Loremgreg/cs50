@@ -10,34 +10,22 @@ taqueria_price = {
     "Tortilla Salad": 8.00
 }
 
+
 def main():
+    total_cost= 0
+
     while True:
         try:
-            item = input("Item: ")
-            prix = check_item(taqueria_price[item])
-            print(f"${prix}")
+            item = input("Item: ").title()
+            value = taqueria_price.get(item)
+            if value is not None:
+                total_cost += value
+                print(f"Total: ${total_cost:.2f}", end="\n")
+
         except EOFError:
-            return
+            print()
+            break
 
-def check_item(item):
-    list_items = []
-    for item in taqueria_price:
-        list_items += item
-    return list_items
-
-def total_cost(list_items):
-    pass
 
 
 main()
-
-    # demander au user to place an order - stop quand "ctrl-d"
-    # display total cost of all items a 2 decimale
-    # input user est case insensitively
-    # ignorer (continue) quand ce nest pas un item de la liste
-
-    # Plan:
-    # main() : va prompter le user avec un try except error
-    # total_cost() : va additionner le montant des items et retourner une valeur
-    # check_item() : va utiliser get(key, default=None, /) pour looper dans le dic. Return le prix de l'item
-
