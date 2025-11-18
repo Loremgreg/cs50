@@ -1,6 +1,4 @@
-from pathologies_data import pathologies
-import pathologies_data
-
+import json
 def main():
 # gère le menu, les input(), les print()
     choice = input("1)Search by slug. 2)list_all_pathologies. ")
