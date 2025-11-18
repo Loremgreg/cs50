@@ -1,4 +1,4 @@
-PATHOLOGIES = [
+pathologies = [
     {
         "slug": "frozen-shoulder",
         "name": "Frozen Shoulder (Adhesive Capsulitis)",

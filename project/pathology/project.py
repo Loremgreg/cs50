@@ -1,6 +1,15 @@
+from pathologies_data import pathologies
+import pathologies_data
 
 def main():
 # gère le menu, les input(), les print()
+    choice = input("1)Search by slug. 2)list_all_pathologies. ")
+    
+    if choice == "1":
+        slug_choice = input("Slug: ")
+        print(get_pathology_by_slug(slug_choice))
+    else:
+        pass
 
 # Si tape :
 # 1. liste toutes les patho
@@ -17,21 +26,26 @@ def main():
 # → moteur de recherche simple
  
 
-def list_all_pathologies():
+# def list_all_pathologies():
+        
 
-def get_pathology_by_query():
+# def get_pathology_by_query():
 # Recherche simple par mot clé (ou partie du nom) 
 
-def get_pathology_by_slug():
+def get_pathology_by_slug(slug_choice):
 #  Retourne la pathologie dont le slug correspond
+    for slug in pathologies:
+        pathologies.values(slug)
+        if slug == slug_choice:
+            return pathologies["typical_duration_weeks"]
 
-def normalize_name():
+# def normalize_name():
 # insensible aux majuscules/minuscules, espaces   
 
-def search_pathologies_by_body_part():
+# def search_pathologies_by_body_part():
 # 4. filtrer selon MS, MI, Dos, Traumatologie (fracture, elongation): search_pathologies_by_body_part: 
 
-
+main()
 
 
 
