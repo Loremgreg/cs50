@@ -31,11 +31,13 @@ def main():
 # Recherche simple par mot clé (ou partie du nom) 
 
 def get_pathology_by_slug(slug_choice):
-#  Retourne la pathologie dont le slug correspond
-    for slug in pathologies:
-        pathologies.values(slug)
-        if slug == slug_choice:
-            return pathologies["typical_duration_weeks"]
+    with open("pathologies_data.json") as data_file:
+        parsed_json = json.load(data_file)
+
+        for slug in parsed_json:
+            # parsed_json.values(slug)
+            if slug == slug_choice:
+                return parsed_json["typical_duration_weeks"]
 
 # def normalize_name():
 # insensible aux majuscules/minuscules, espaces   
