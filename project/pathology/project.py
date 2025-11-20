@@ -15,7 +15,9 @@ def main():
         # afficher message d'erreur et reprompter 
     if choice == "1":
         slug_choice = input("Slug: ")
-        print(get_pathology_by_slug(slug_choice))
+        s = get_pathology_by_slug(slug_choice)
+    
+
     else:
         pass
 
@@ -35,7 +37,7 @@ def main():
  
 
 # def list_all_pathologies():
-        
+        # ensuite selectionnée une patho et afficher result 
 
 # def get_pathology_by_query():
 # Recherche simple par mot clé (ou partie du nom) 
@@ -44,10 +46,10 @@ def get_pathology_by_slug(slug_choice):
     with open("pathologies_data.json") as data_file:
         parsed_json = json.load(data_file)
 
-        for slug in parsed_json:
+        for pathology in parsed_json:
             # parsed_json.values(slug)
-            if slug == slug_choice:
-                return slug["typical_duration_weeks"]
+            if pathology["slug"] == slug_choice:
+                return pathology
 
 # def normalize_name():
 # insensible aux majuscules/minuscules, espaces   
