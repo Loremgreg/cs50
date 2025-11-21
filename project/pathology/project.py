@@ -7,16 +7,45 @@ figlet.setFont(font="big")
 
 def main():
 # gère le menu, les input(), les print()
-    print(figlet.renderText("1. Search by slug."))
-    print("2. list_all_pathologies.")
+    print(figlet.renderText("Welcome"))
+    print("1. All pathologies.")
+    print("2. Search by slug.")
     choice = input("Choice: ")
     
     # if choice < 1 and choice > 4:
         # afficher message d'erreur et reprompter 
     if choice == "1":
+        all_patho = list_all_pathologies()
+        print("List of pathologies:\n")
+        for patho in all_patho:
+            print(f" - {patho}")
+
+    
+    elif choice == "2":
         slug_choice = input("Slug: ")
         s = get_pathology_by_slug(slug_choice)
-    
+        print(figlet.renderText(f"Name: {s["name"]}"))
+        print(f"Typical duration (weeks): {s["typical_duration_weeks"]}\n")
+
+        print("Phases:")
+        for phase in s["phases"]:
+            print(f"  - {phase}")
+        print()
+
+        print("Prognosis:")
+        print(f"  - {s["prognosis"]}")
+        print()
+
+        print("Red flags:")
+        for flag in s["red_flags"]:
+            print(f"  - {flag}")
+        print()
+
+        print("Key Points:")
+        for key in s["key_points"]:
+            print(f"  - {key}")
+        print()
+
 
     else:
         pass
@@ -36,8 +65,17 @@ def main():
 # → moteur de recherche simple
  
 
-# def list_all_pathologies():
+def list_all_pathologies():
         # ensuite selectionnée une patho et afficher result 
+        with open("pathologies_data.json") as data_file:
+            parsed_json = json.load(data_file)
+
+        list_of_patho = []
+        for pathology in parsed_json:
+            if pathology["name"]:
+                list_of_patho.append(pathology["name"])
+        return list_of_patho
+    
 
 # def get_pathology_by_query():
 # Recherche simple par mot clé (ou partie du nom) 
@@ -56,6 +94,9 @@ def get_pathology_by_slug(slug_choice):
 
 # def search_pathologies_by_body_part():
 # 4. filtrer selon MS, MI, Dos, Traumatologie (fracture, elongation): search_pathologies_by_body_part: 
+
+
+
 
 main()
 
